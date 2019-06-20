@@ -1,0 +1,7 @@
+I need to create a counter that can count the bowls and overs per innings
+
+There are six bowls per over
+notation is displayed as 0.1, 0.2, 0.3, 0.4, 0.5, 1.0, 1.1, ... 49.5, 50
+After team 1 has had 50 overs, then team 2 gets 50 overs
+
+Ideally, each bowl would occur no longer than 5 seconds apart, but the first upgrade would be for a button that forces the counter to increase
