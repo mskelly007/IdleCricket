@@ -5,7 +5,7 @@ var gameData = {
 }
 
 function throwBall() {
-  gameData.bowl += gameData.bowlPerClick;
+    gameData.bowl += gameData.bowlPerClick;
 
   if (gameData.bowl > 5) {
     gameData.over++;
@@ -18,3 +18,7 @@ function throwBall() {
 var mainGameLoop = window.setInterval(function() {
   throwBall()
 }, 5000)
+
+//I need to make the timer reset on buttonclick
+//I found a thing called clearInterval which I think I just need to add into the throwBall function
+//But everytime I add it into the function, throwBall stops working (i.e the button doesn't click anymore)
