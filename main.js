@@ -3,6 +3,8 @@ var gameData = {
   overB: 0,
   bowlA: 0,
   bowlB: 0,
+  runsA: 200,
+  runsB: 0,
   bowlPerClick: 1
 }
 
@@ -26,7 +28,7 @@ function generatePlayers() {
 
 //I broke the click aspect out into it's own function so you could reset the timer of the main function.
 function clickThrowBall() {
-    if (gameData.overB=50){
+    if (gameData.overB == 50){
         return;
     }
   throwBall();
@@ -45,6 +47,7 @@ function throwBall() {
         }
 
         document.getElementById("overCountB").innerHTML = gameData.overB + "." + gameData.bowlB;
+        document.getElementById("crrB").innerHTML = gameData.runsB / gameData.overB;
     } else {
         gameData.bowlA += gameData.bowlPerClick;
 
@@ -53,8 +56,13 @@ function throwBall() {
             gameData.bowlA = 0;
         }
 
-        document.getElementById("overCountA").innerHTML = gameData.overA + "." + gameData.bowlA;
+        var overCountA = gameData.overA + "." + gameData.bowlA;
+        document.getElementById("overCountA").innerHTML = overCountA;
+
+        var crrA = gameData.runsA / (gameData.overA + (gameData.bowlA/6));
+        document.getElementById("crrA").innerHTML = crrA;
     }
+    
 }
 
 //var mainGameLoop = window.setInterval(function() {
