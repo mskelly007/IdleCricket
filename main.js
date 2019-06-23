@@ -38,20 +38,23 @@ function clickThrowBall() {
 function throwBall() {
     if (gameData.overA>=50) {
         gameData.bowlB += gameData.bowlPerClick;
-    if (gameData.bowlB > 5) {
-        gameData.overB++;
-        gameData.bowlB = 0;}
-    document.getElementById("overCountB").innerHTML = gameData.overB + "." + gameData.bowlB;
-    }
-    else{
-        gameData.bowlA += gameData.bowlPerClick;
-    if (gameData.bowlA > 5) {
-        gameData.overA++;
-        gameData.bowlA = 0;
-        }
-    document.getElementById("overCountA").innerHTML = gameData.overA + "." + gameData.bowlA;
 
-}
+        if (gameData.bowlB > 5) {
+            gameData.overB++;
+            gameData.bowlB = 0;
+        }
+
+        document.getElementById("overCountB").innerHTML = gameData.overB + "." + gameData.bowlB;
+    } else {
+        gameData.bowlA += gameData.bowlPerClick;
+
+        if (gameData.bowlA > 5) {
+            gameData.overA++;
+            gameData.bowlA = 0;
+        }
+
+        document.getElementById("overCountA").innerHTML = gameData.overA + "." + gameData.bowlA;
+    }
 }
 
 //var mainGameLoop = window.setInterval(function() {
