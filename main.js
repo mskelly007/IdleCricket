@@ -8,6 +8,9 @@ var gameData = {
 
 //I broke the click aspect out into it's own function so you could reset the timer of the main function.
 function clickThrowBall() {
+    if (gameData.overB=50){
+        return;
+    }
   throwBall();
 
   clearInterval(mainGameLoop);
