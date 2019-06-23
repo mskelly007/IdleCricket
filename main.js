@@ -6,6 +6,24 @@ var gameData = {
   bowlPerClick: 1
 }
 
+function generatePlayers() {
+    var players = [{}];
+
+    for (i = 0; i < 1000; i++) {        
+        var player = {
+            pitchModifier: Math.random(),
+            runModifier: Math.random(),
+            //position: Math.random(['Pitcher','Catcher','Etc']),
+        };
+
+        players.push(
+            player
+        );
+    }
+    
+    console.log(players);
+}
+
 //I broke the click aspect out into it's own function so you could reset the timer of the main function.
 function clickThrowBall() {
     if (gameData.overB=50){
