@@ -5,22 +5,23 @@
     <title>Idle Cricket</title>
   </head>
   <body>
-      <h2>Game #</h2>
-<table style="width:100%">
+      <h2 style="text-align:center">Game #</h2>
+<table style="width:100%; text-align:center">
   <tr>
     <th>Team A</th>
     <th>Team B</th>
   </tr>
   <tr>
-    <align:center><td><id="runsA"> 0 / <id="outsA"> 0 </td></align:center>
-    <td><id="runsB"> 0 / <id="outsB"> 0 </td>  </tr>
+    <td><label id="runsA"> 0 </label>/<label id="outsA"> 0 </label></td>
+    <td><label id="runsB"> 0 </label>/<label id="outsB"> 0 </label></td>
+    </tr>
   <tr>
-    <td><id="overCountA">0.0</td>
-    <td><id="overCountB">0.0</td>
+    <td id="overCountA">0.0</td>
+    <td id="overCountB">0.0</td>
   </tr>
   <tr>
-      <td><id="crrA">CRR 0.00</td>
-      <td><id="crrB">CRR 0.00 / <id="rrrB">RRR 0.00</td>
+      <td id="crrA">CRR 0.00</td>
+      <td>CRR <label id="crrB">0.00</label>/ RRR <label id="rrrB">0.00</label></td>
   </tr>
 </table>
     <button onclick="clickThrowBall()">Bowl</button>
