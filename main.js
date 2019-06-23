@@ -1,6 +1,8 @@
 var gameData = {
-  over: 0,
-  bowl: 0,
+  overA: 0,
+  overB: 0,
+  bowlA: 0,
+  bowlB: 0,
   bowlPerClick: 1
 }
 
@@ -13,14 +15,14 @@ function clickThrowBall() {
 }
 
 function throwBall() {
-    gameData.bowl += gameData.bowlPerClick;
+    gameData.bowlA += gameData.bowlPerClick;
 
-  if (gameData.bowl > 5) {
-    gameData.over++;
-    gameData.bowl = 0;
+  if (gameData.bowlA > 5) {
+    gameData.overA++;
+    gameData.bowlA = 0;
   }
 
-  document.getElementById("overCount").innerHTML = gameData.over + "." + gameData.bowl;
+  document.getElementById("overCountA").innerHTML = gameData.overA + "." + gameData.bowlA;
 }
 
 //var mainGameLoop = window.setInterval(function() {
@@ -43,7 +45,7 @@ var mainGameLoop = setInterval(throwBall,5000);
 /*
 I would think about this:
 Many things on the screen will be updating at different intervals.
-Instead of keeping track of multiple different intervals, clearing intervals, changing intervals, 
+Instead of keeping track of multiple different intervals, clearing intervals, changing intervals,
 I would create a single repeating function called something like tick()
 Have tick() run 10x a second, and call anything else you need from there.
 maybe keep a timeSinceLastPitch variable, start it at 0
