@@ -7,7 +7,7 @@ var gameData = {
   runsB: 0,
   outsA: 0,
   outsB: 0,
-  bowlPerClick: 6
+  bowlPerClick: 1
 }
 
 //generate 1000 players with various stats
@@ -39,38 +39,36 @@ function clickThrowBall() {
     mainGameLoop = setInterval(throwBall,5000);
 }
 
-
-
-
 function hit() {
     var runs = 0;
     var hitResult = Math.random();
-    if (0<hitResult<=.2){
-        runs = 1;
+    if (0<hitResult<=(40/300)){
+        runs = 6;
     }
-    if (.2<hitResult<=.4){
-        runs = 2;
-    }
-    if (.4<hitResult<=.6){
-        runs = 3;
-    }
-    if (.6<hitResult<=.8){
+    if ((40/300)<hitResult<=(140/300)){
         runs = 4;
     }
-    if (.8<hitResult<=1){
-        runs = 6;
+    if ((140/300)<hitResult<=(180/300)){
+        runs = 3;
+    }
+    if ((180/300)<hitResult<=(260/300)){
+        runs = 2;
+    }
+    if ((260/300)<hitResult<=1){
+        runs = 1;
     }
     return runs;
 }
 
-
+//this function will eventually be filled our and used to award different outs for stats purposes for players
+/*
 function anOut() {
     gameData.outs
 }
 
+*/
 
-
-function throwBall() {    
+function throwBall() {
     if (gameData.overB == 50){
         return;
     }
@@ -78,6 +76,7 @@ function throwBall() {
     var currentTeam = gameData.overA<50 ? "A" : "B";
     var runs = 0;
     var outs = 0;
+
 //defining the result of a bowl
     var bowlResult = Math.random();
     if (bowlResult <= .5){
@@ -130,7 +129,7 @@ function throwBall() {
         var crrB = gameData.runsB / (gameData.overB + (gameData.bowlB/6));
         document.getElementById("crrB").innerHTML = crrB.toFixed(2);
 
-        var runsToWin = (gameData.runsA + 1);
+        var runsToWin = (gameData.runsA + 1)-gameData.runsB;
         document.getElementById("runsToWin").innerHTML = runsToWin;
 
         var bowlsRemaining = (((49 - gameData.overB)*6)+(6-gameData.bowlB));
