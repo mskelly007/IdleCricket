@@ -67,7 +67,7 @@ function throwBall() {
         var overCountA = gameData.overA + "." + gameData.bowlA;
         document.getElementById("overCountA").innerHTML = overCountA;
 
-        document.getElementById("runsA").innerHTML = runsA;
+        document.getElementById("runsA").innerHTML = gameData.runsA;
 
         var crrA = gameData.runsA / (gameData.overA + (gameData.bowlA/6));
         document.getElementById("crrA").innerHTML = crrA;
