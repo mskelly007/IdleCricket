@@ -7,9 +7,11 @@ var gameData = {
   runsB: 0,
   outsA: 0,
   outsB: 0,
-  bowlPerClick: 1
+  bowlPerClick: 6
 }
 
+//generate 1000 players with various stats
+/*
 function generatePlayers() {
     var players = [{}];
 
@@ -27,33 +29,60 @@ function generatePlayers() {
 
     console.log(players);
 }
+*/
 
 function clickThrowBall() {
     if (gameData.overB == 50){
         return;
     }
-  throwBall();
 
-  clearInterval(mainGameLoop);
-  mainGameLoop = setInterval(throwBall,5000);
+    throwBall();
+
+    clearInterval(mainGameLoop);
+    mainGameLoop = setInterval(throwBall,5000);
 }
 
 function throwBall() {
 
 //defining the result of a bowl
 /*
+
+function aHit() {
+    var hitResult : Math.random(),
+    if (0<hitResult<=.2){
+        gameData.runsA +1;
+    }
+    if (.2<hitResult<=.4){
+        gameData.runsA +2;
+    }
+    if (.4<hitResult<=.6){
+        gameData.runsA +3;
+    }
+    if (.6<hitResult<=.8){
+        gameData.runsA +4;
+    }
+    if (.8<hitResult<=1){
+        gameData.runsA +1;
+    }
+}
+
+function anOut() {
+
+}
+
     var bowlResult: Math.random(),
-    if (bowlResult <= .25){
-        gameData.runsA ++
+    if (bowlResult <= .5){
+        aHit();
     }
     else {
-        if (bowlresult >= .75) {
-            gameData.outsA ++
+        if (bowlresult >= 1-(10/300)) {
+        anOut();
         }
         else {
             return;
         }
     }
+
 */
 
 //updating the current over count
@@ -69,9 +98,11 @@ function throwBall() {
         document.getElementById("overCountA").innerHTML = overCountA;
 
         document.getElementById("runsA").innerHTML = gameData.runsA;
+        document.getElementById("outsA").innerHTML = gameData.outsA;
 
         var crrA = gameData.runsA / (gameData.overA + (gameData.bowlA/6));
         document.getElementById("crrA").innerHTML = crrA;
+
     }
     else {
         gameData.bowlB += gameData.bowlPerClick;
@@ -85,6 +116,15 @@ function throwBall() {
 
         var crrB = gameData.runsB / (gameData.overB + (gameData.bowlB/6));
         document.getElementById("crrB").innerHTML = crrB;
+
+        var runsToWin = (gameData.runsA + 1);
+        document.getElementById("runsToWin").innerHTML = runsToWin;
+
+        var bowlsRemaining = (((49 - gameData.overB)*6)+(6-gameData.bowlB));
+        document.getElementById("bowlsRemaining").innerHTML = bowlsRemaining;
+
+        var rrrB = runsToWin / (bowlsRemaining/6);
+        document.getElementById("rrrB").innerHTML = rrrB;
 
     }
 
