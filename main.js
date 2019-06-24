@@ -39,6 +39,7 @@ function clickThrowBall() {
 }
 
 function throwBall() {
+
 //defining the result of a bowl
 /*
     var bowlResult: Math.random(),
@@ -79,11 +80,12 @@ function throwBall() {
             gameData.overB++;
             gameData.bowlB = 0;
         }
-        var overCountA = gameData.overB + "." + gameData.bowlB;
+        var overCountB = gameData.overB + "." + gameData.bowlB;
         document.getElementById("overCountB").innerHTML = overCountB;
 
-        var crrA = gameData.runsB / (gameData.overB + (gameData.bowlB/6));
+        var crrB = gameData.runsB / (gameData.overB + (gameData.bowlB/6));
         document.getElementById("crrB").innerHTML = crrB;
+
     }
 
     if(gameData.overB == 50) {
