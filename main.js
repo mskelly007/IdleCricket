@@ -42,51 +42,57 @@ function clickThrowBall() {
     mainGameLoop = setInterval(throwBall,5000);
 }
 
-function throwBall() {
 
-//defining the result of a bowl
-/*
 
-function aHit() {
-    var hitResult : Math.random(),
+
+function hit() {
+    var runs = 0;
+    var hitResult = Math.random();
     if (0<hitResult<=.2){
-        gameData.runsA +1;
+        runs = 1;
     }
     if (.2<hitResult<=.4){
-        gameData.runsA +2;
+        runs = 2;
     }
     if (.4<hitResult<=.6){
-        gameData.runsA +3;
+        runs = 3;
     }
     if (.6<hitResult<=.8){
-        gameData.runsA +4;
+        runs = 4;
     }
     if (.8<hitResult<=1){
-        gameData.runsA +1;
+        runs = 6;
     }
+    return runs;
 }
+
 
 function anOut() {
-
+    gameData.outs
 }
 
-    var bowlResult: Math.random(),
+
+
+function throwBall() {
+    var currentTeam = gameData.overA<50 ? "A" : "B";
+    var runs = 0;
+    var outs = 0;
+//defining the result of a bowl
+    var bowlResult = Math.random();
     if (bowlResult <= .5){
-        aHit();
+        runs = hit();
     }
-    else {
-        if (bowlresult >= 1-(10/300)) {
-        anOut();
+    else if (bowlresult >= 1-(10/300)) {
+        outs = 1;
         }
         else {
-            return;
+      //      return;
         }
-    }
-
-*/
 
 //updating the current over count
     if (gameData.overA<50) {
+        gameData.runsA += runs;
+        gameData.outsA += outs;
         gameData.bowlA += gameData.bowlPerClick;
 
         if (gameData.bowlA > 5) {
@@ -106,6 +112,9 @@ function anOut() {
     }
     else {
         gameData.bowlB += gameData.bowlPerClick;
+        gameData.runsB += runs;
+        gameData.outsB += outs;
+
 
         if (gameData.bowlB > 5) {
             gameData.overB++;
