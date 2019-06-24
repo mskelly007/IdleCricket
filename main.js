@@ -32,9 +32,6 @@ function generatePlayers() {
 */
 
 function clickThrowBall() {
-    if (gameData.overB == 50){
-        return;
-    }
 
     throwBall();
 
@@ -73,7 +70,11 @@ function anOut() {
 
 
 
-function throwBall() {
+function throwBall() {    
+    if (gameData.overB == 50){
+        return;
+    }
+
     var currentTeam = gameData.overA<50 ? "A" : "B";
     var runs = 0;
     var outs = 0;
@@ -82,7 +83,7 @@ function throwBall() {
     if (bowlResult <= .5){
         runs = hit();
     }
-    else if (bowlresult >= 1-(10/300)) {
+    else if (bowlResult >= 1-(10/300)) {
         outs = 1;
         }
         else {
@@ -107,7 +108,7 @@ function throwBall() {
         document.getElementById("outsA").innerHTML = gameData.outsA;
 
         var crrA = gameData.runsA / (gameData.overA + (gameData.bowlA/6));
-        document.getElementById("crrA").innerHTML = crrA;
+        document.getElementById("crrA").innerHTML = crrA.toFixed(2);
 
     }
     else {
@@ -123,8 +124,11 @@ function throwBall() {
         var overCountB = gameData.overB + "." + gameData.bowlB;
         document.getElementById("overCountB").innerHTML = overCountB;
 
+        document.getElementById("runsB").innerHTML = gameData.runsB;
+        document.getElementById("outsB").innerHTML = gameData.outsB;
+
         var crrB = gameData.runsB / (gameData.overB + (gameData.bowlB/6));
-        document.getElementById("crrB").innerHTML = crrB;
+        document.getElementById("crrB").innerHTML = crrB.toFixed(2);
 
         var runsToWin = (gameData.runsA + 1);
         document.getElementById("runsToWin").innerHTML = runsToWin;
@@ -133,12 +137,8 @@ function throwBall() {
         document.getElementById("bowlsRemaining").innerHTML = bowlsRemaining;
 
         var rrrB = runsToWin / (bowlsRemaining/6);
-        document.getElementById("rrrB").innerHTML = rrrB;
+        document.getElementById("rrrB").innerHTML = rrrB.toFixed(2);
 
-    }
-
-    if(gameData.overB == 50) {
-        return;
     }
 }
 
