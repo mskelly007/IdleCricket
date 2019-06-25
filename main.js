@@ -42,25 +42,25 @@ function clickThrowBall() {
 function hit() {
     var runs = 0;
     var hitResult = Math.random();
-    if (0<hitResult<=(40/300)){
+    if (0<hitResult&&hitResult<=(30/300)){
         runs = 6;
     }
-    if ((40/300)<hitResult<=(140/300)){
+    if ((30/300)<hitResult&&hitResult<=(90/300)){
         runs = 4;
     }
-    if ((140/300)<hitResult<=(180/300)){
+    if ((90/300)<hitResult&&hitResult<=(120/300)){
         runs = 3;
     }
-    if ((180/300)<hitResult<=(260/300)){
+    if ((120/300)<hitResult&&hitResult<=(180/300)){
         runs = 2;
     }
-    if ((260/300)<hitResult<=1){
+    if ((180/300)<hitResult&&hitResult<=1){
         runs = 1;
     }
     return runs;
 }
 
-//this function will eventually be filled our and used to award different outs for stats purposes for players
+//this function will eventually be filled out and used to award different types of outs for stats purposes for players
 /*
 function anOut() {
     gameData.outs
@@ -70,6 +70,10 @@ function anOut() {
 
 function throwBall() {
     if (gameData.overB == 50){
+        return;
+    }
+
+    if(gameData.outsB ==  10){
         return;
     }
 
