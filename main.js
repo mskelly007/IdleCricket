@@ -42,19 +42,19 @@ function clickThrowBall() {
 function hit() {
     var runs = 0;
     var hitResult = Math.random();
-    if (0<hitResult&&hitResult<=(30/300)){
+    if (0<hitResult&&hitResult<=(10/300)){
         runs = 6;
     }
-    if ((30/300)<hitResult&&hitResult<=(90/300)){
+    if ((10/300)<hitResult&&hitResult<=(70/300)){
         runs = 4;
     }
-    if ((90/300)<hitResult&&hitResult<=(120/300)){
+    if ((70/300)<hitResult&&hitResult<=(75/300)){
         runs = 3;
     }
-    if ((120/300)<hitResult&&hitResult<=(180/300)){
+    if ((75/300)<hitResult&&hitResult<=(100/300)){
         runs = 2;
     }
-    if ((180/300)<hitResult&&hitResult<=1){
+    if ((100/300)<hitResult&&hitResult<=1){
         runs = 1;
     }
     return runs;
