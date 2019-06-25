@@ -1,4 +1,5 @@
 var gameData = {
+  gameNumber: 1,
   overA: 0,
   overB: 0,
   bowlA: 0,
@@ -77,6 +78,10 @@ function throwBall() {
         return;
     }
 
+    if(gameData.runsB>gameData.runsA){
+        return;
+    }
+
     var currentTeam = gameData.overA<50 ? "A" : "B";
     var runs = 0;
     var outs = 0;
@@ -94,7 +99,7 @@ function throwBall() {
         }
 
 //updating the current over count
-    if (gameData.overA<50) {
+    if (gameData.overA<50 && gameData.outsA<10) {
         gameData.runsA += runs;
         gameData.outsA += outs;
         gameData.bowlA += gameData.bowlPerClick;
@@ -147,6 +152,39 @@ function throwBall() {
 
 //Idle Functionality: throws one pitch every 5 seconds
 var mainGameLoop = setInterval(throwBall,5000);
+
+function newGame() {
+
+//saving game stats to a table and calculate points for tournament
+
+//resetting game stats to 0
+    gameData.overA=0;
+    gameData.overB=0;
+    gameData.bowlA=0;
+    gameData.bowlB=0;
+    gameData.runsA=0;
+    gameData.runsB=0;
+    gameData.outsA=0;
+    gameData.outsB=0;
+
+//resetting displays to 0
+    document.getElementById("overCountA").innerHTML = "0.0";
+    document.getElementById("runsA").innerHTML = 0;
+    document.getElementById("outsA").innerHTML = 0;
+    document.getElementById("crrA").innerHTML = "0.00";
+    document.getElementById("overCountB").innerHTML = "0.0";
+    document.getElementById("runsB").innerHTML = 0;
+    document.getElementById("outsB").innerHTML = 0;
+    document.getElementById("crrB").innerHTML = "0.00";
+    document.getElementById("runsToWin").innerHTML = 0;
+    document.getElementById("bowlsRemaining").innerHTML = 0;
+    document.getElementById("rrrB").innerHTML = "0.00";
+
+//increasing game #
+    document.getElementById("gameNumber").innerHTML = gameData.gameNumber++;
+
+
+}
 
 /*
 I would think about this:
