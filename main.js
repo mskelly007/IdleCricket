@@ -181,7 +181,8 @@ function newGame() {
     document.getElementById("rrrB").innerHTML = "0.00";
 
 //increasing game #
-    document.getElementById("gameNumber").innerHTML = gameData.gameNumber+1;
+    var newGameNumber = gameData.gameNumber += 1;
+    document.getElementById("gameNumber").innerHTML = newGameNumber;
 
 }
 
