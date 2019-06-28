@@ -153,12 +153,12 @@ function throwBall() {
 
 //Declares winner at end of game
 function declareWinner() {
-    var gameWinner = gameData.runsA>gameData.runsB ? "Team A" : "Team B";
+    var gameWinner = gameData.runsA>gameData.runsB ? ("Team A is the winner by " + (gameData.runsA - gameData.runsB) + " runs") : ("Team B is the winner by " + (10 - gameData.outsB) + " wickets") ;
     if (gameWinner = "Team A") {
-        document.getElementById("gameWinner").innerHTML = gameWinner + " is the winner by " + (gameData.runsA - gameData.runsB) + " runs";
+        document.getElementById("gameWinner").innerHTML = gameWinner;
     }
     else {
-        document.getElementById("gameWinner").innerHTML = gameWinner + " is the winner by " + (10 - gameData.outsB) + " wickets";
+        document.getElementById("gameWinner").innerHTML = gameWinner;
     }
 }
 
