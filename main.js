@@ -8,7 +8,7 @@ var gameData = {
   runsB: 0,
   outsA: 0,
   outsB: 0,
-  bowlPerClick: 1
+  bowlPerClick: 6
 }
 
 //generate 1000 players with various stats
@@ -119,11 +119,10 @@ function throwBall() {
         document.getElementById("crrA").innerHTML = crrA.toFixed(2);
 
     }
-    else {
+    else if(gameData.overB<50 && gameData.outsB<10){
         gameData.bowlB += gameData.bowlPerClick;
         gameData.runsB += runs;
         gameData.outsB += outs;
-
 
         if (gameData.bowlB > 5) {
             gameData.overB++;
@@ -146,13 +145,28 @@ function throwBall() {
 
         var rrrB = runsToWin / (bowlsRemaining/6);
         document.getElementById("rrrB").innerHTML = rrrB.toFixed(2);
+    }
+    else{
+        declareWinner();
+    }
+}
 
+//Declares winner at end of game
+function declareWinner() {
+    var gameWinner = gameData.runsA>gameData.runsB ? "Team A" : "Team B";
+    if (gameWinner = "Team A") {
+        document.getElementById("gameWinner").innerHTML = gameWinner + " is the winner by " + (gameData.runsA - gameData.runsB) + " runs";
+    }
+    else {
+        document.getElementById("gameWinner").innerHTML = gameWinner + " is the winner by " + (10 - gameData.outsB) + " wickets";
     }
 }
 
 //Idle Functionality: throws one pitch every 5 seconds
 var mainGameLoop = setInterval(throwBall,5000);
 
+
+//setting a New Game
 function newGame() {
 
 //saving game stats to a table and calculate points for tournament
