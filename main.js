@@ -72,14 +72,17 @@ function anOut() {
 function throwBall() {
     if (gameData.overB == 50){
         declareWinner();
+        return;
     }
 
     if(gameData.outsB ==  10){
         declareWinner();
+        return;
     }
 
     if(gameData.runsB>gameData.runsA){
         declareWinner();
+        return;
     }
 
     var currentTeam = gameData.overA<50 ? "A" : "B";
@@ -154,11 +157,9 @@ function declareWinner() {
     var gameWinner = gameData.runsA>gameData.runsB ? "Team A" : "Team B" ;
     if (gameWinner == "Team A") {
         document.getElementById("gameWinner").innerHTML = gameWinner + " is the winner by " + (gameData.runsA - gameData.runsB) + " runs" ;
-        return;
     }
     else {
         document.getElementById("gameWinner").innerHTML = gameWinner + " is the winner by " + (10 - gameData.outsB) + " wickets" ;
-        return;
     }
 }
 
