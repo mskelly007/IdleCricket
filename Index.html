@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Idle Cricket</title>
-  </head>
-  <body>
-      <h2 style="text-align:center">Game <label id="gameNumber">1</label>    <div style="text-align:center"><button onClick="newGame()">New Game</button></div></h2>
-<table style="width:100%; text-align:center">
-  <tr>
-    <th>Team A</th>
-    <th>Team B</th>
-  </tr>
-  <tr>
-    <td><label id="runsA"> 0 </label> / <label id="outsA"> 0 </label></td>
-    <td><label id="runsB"> 0 </label> / <label id="outsB"> 0 </label></td>
+    <head>
+        <meta charset="utf-8">
+        <title>Idle Cricket</title>
+    </head>
+    <body>
+        <h2 style="text-align:center">Game <label id="gameNumber">1</label>    <div style="text-align:center"><button onClick="newGame()">New Game</button></div></h2>
+    <table style="width:100%; text-align:center">
+        <colgroup>
+            <col span="1" style="width: 50%;">
+            <col span="1" style="width: 50%;">
+        </colgroup>
+    <tr>
+        <th>Team A</th>
+        <th>Team B</th>
     </tr>
-  <tr>
-    <td><label id="overCountA">0.0</label></td>
-    <td><label id="overCountB">0.0</label></td>
-  </tr>
-  <tr>
-      <td>CRR <label id="crrA">0.00</label></td>
-      <td>CRR <label id="crrB">0.00</label> / RRR <label id="rrrB">0.00</label></td>
-  </tr>
-  <tr>
-      <td></td>
-      <td><label id="runsToWin">0</label> Runs needed to win in <label id="bowlsRemaining">0</label> bowls remaining</td>
-  </tr>
-</table>
-    <div style="text-align:center"><button onclick="clickThrowBall()">Bowl</button></div>
-  <script src="main.js" charset="utf-8" type="text/javascript"></script>
-  </body>
+    <tr>
+        <td><label id="runsA"> 0 </label> / <label id="outsA"> 0 </label></td>
+        <td><label id="runsB"> 0 </label> / <label id="outsB"> 0 </label></td>
+    </tr>
+    <tr>
+        <td><label id="overCountA">0.0</label></td>
+        <td><label id="overCountB">0.0</label></td>
+    </tr>
+    <tr>
+        <td>CRR <label id="crrA">0.00</label></td>
+        <td>CRR <label id="crrB">0.00</label> / RRR <label id="rrrB">0.00</label></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><label id="runsToWin">0</label> Runs needed to win in <label id="bowlsRemaining">0</label> bowls remaining</td>
+    </tr>
+    </table>
+<div style="text-align:center"><button onclick="clickThrowBall()">Bowl</button></div>
+<script src="main.js" charset="utf-8" type="text/javascript"></script>
+</body>
 </html>
