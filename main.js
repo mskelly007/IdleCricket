@@ -19,6 +19,7 @@ function loadGame(){
         newGame();
     }
     document.getElementById("gameNumber").innerHTML = gameData.gameNumber;
+    changeSpeed();
     throwBall();
 }
 
@@ -189,10 +190,20 @@ function declareWinner() {
         document.getElementById("gameWinner").innerHTML = gameWinner + " won by " + (10 - gameData.outsB) + " wickets" ;
     }
 }
-
+//on win
+document.getElementById("gameWinner").style += "display:none;"
+//on new game
+document.getElementById("gameWinner").style += "display:initial;"
 //Idle Functionality: throws one pitch every 5 seconds
 var mainGameLoop = setInterval(throwBall,5000);
 
+function changeSpeed()
+{
+    var speed = document.getElementById("speedSlider").value * 1000;    
+    clearInterval(mainGameLoop);
+    mainGameLoop = setInterval(throwBall,speed);
+    document.getElementById("lblSpeed").innerHTML = (speed / 1000 * 600 / 60);
+}
 
 //setting a New Game
 function newGame() {
