@@ -152,7 +152,7 @@ function throwBall() {
 //Declares winner at end of game
 function declareWinner() {
     var gameWinner = gameData.runsA>gameData.runsB ? "Team A" : "Team B" ;
-    if (gameWinner = "Team A") {
+    if (gameWinner == "Team A") {
         document.getElementById("gameWinner").innerHTML = gameWinner + " is the winner by " + (gameData.runsA - gameData.runsB) + " runs" ;
         return;
     }
