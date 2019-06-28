@@ -8,7 +8,7 @@ var gameData = {
   runsB: 0,
   outsA: 0,
   outsB: 0,
-  bowlPerClick: 1
+  bowlPerClick: 1;
 }
 
 //generate 1000 players with various stats
