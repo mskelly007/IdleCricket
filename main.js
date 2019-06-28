@@ -183,10 +183,10 @@ function throwBall() {
 function declareWinner() {
     var gameWinner = gameData.runsA>gameData.runsB ? "Team A" : "Team B" ;
     if (gameWinner == "Team A") {
-        document.getElementById("gameWinner").innerHTML = gameWinner + " is the winner by " + (gameData.runsA - gameData.runsB) + " runs" ;
+        document.getElementById("gameWinner").innerHTML = gameWinner + " won by " + (gameData.runsA - gameData.runsB) + " runs" ;
     }
     else {
-        document.getElementById("gameWinner").innerHTML = gameWinner + " is the winner by " + (10 - gameData.outsB) + " wickets" ;
+        document.getElementById("gameWinner").innerHTML = gameWinner + " won by " + (10 - gameData.outsB) + " wickets" ;
     }
 }
 
