@@ -1,5 +1,5 @@
 var gameData = {
-  gameNumber: 1,
+  gameNumber: 0,
   overA: 0,
   overB: 0,
   bowlA: 0,
@@ -10,6 +10,31 @@ var gameData = {
   outsB: 0,
   bowlPerClick: 1
 }
+//load the game
+function loadGame(){
+    if (localStorage.getItem('CricketSave')){
+        gameData = JSON.parse(localStorage.getItem('CricketSave'));
+    }
+    else {
+        newGame();
+    }
+    document.getElementById("gameNumber").innerHTML = gameData.gameNumber;
+    throwBall();
+}
+
+//saving the game
+function saveGame(){
+    localStorage.setItem('CricketSave', JSON.stringify(gameData));
+}
+
+//deleting the saved gameData
+function deleteSave(){
+    localStorage.removeItem('CricketSave');
+    location.reload();
+}
+
+//load game on window start-up
+window.onload = loadGame;
 
 //generate 1000 players with various stats
 /*
@@ -149,6 +174,8 @@ function throwBall() {
         var rrrB = runsToWin / (bowlsRemaining/6);
         document.getElementById("rrrB").innerHTML = rrrB.toFixed(2);
     }
+//saving game data to local storage after every ball thrown
+    saveGame();
 
 }
 
@@ -197,8 +224,9 @@ function newGame() {
     document.getElementById("gameWinner").innerHTML = "";
 
 //increasing game #
-    var newGameNumber = gameData.gameNumber += 1;
-    document.getElementById("gameNumber").innerHTML = newGameNumber;
+    gameData.gameNumber += 1;
+    document.getElementById("gameNumber").innerHTML = gameData.gameNumber;
+    saveGame();
 
 }
 
