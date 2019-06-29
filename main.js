@@ -30,19 +30,6 @@ function screenUpdate() {
         document.getElementById("runsB").innerHTML = gameData.runsB;
         document.getElementById("outsB").innerHTML = gameData.outsB;
 
-        var crrB = gameData.runsB / (gameData.overB + (gameData.bowlB/6));
-        document.getElementById("crrB").innerHTML = crrB.toFixed(2);
-
-        var runsToWin = (gameData.runsA + 1)-gameData.runsB;
-        document.getElementById("runsToWin").innerHTML = runsToWin;
-
-        var bowlsRemaining = (((49 - gameData.overB)*6)+(6-gameData.bowlB));
-        document.getElementById("bowlsRemaining").innerHTML = bowlsRemaining;
-
-        var rrrB = runsToWin / (bowlsRemaining/6);
-        document.getElementById("rrrB").innerHTML = rrrB.toFixed(2);
-
-
 }
 
 //load the game
@@ -183,6 +170,18 @@ function throwBall() {
             gameData.overB++;
             gameData.bowlB = 0;
         }
+        var crrB = gameData.runsB / (gameData.overB + (gameData.bowlB/6));
+        document.getElementById("crrB").innerHTML = crrB.toFixed(2);
+
+        var runsToWin = (gameData.runsA + 1)-gameData.runsB;
+        document.getElementById("runsToWin").innerHTML = runsToWin;
+
+        var bowlsRemaining = (((49 - gameData.overB)*6)+(6-gameData.bowlB));
+        document.getElementById("bowlsRemaining").innerHTML = bowlsRemaining;
+
+        var rrrB = runsToWin / (bowlsRemaining/6);
+        document.getElementById("rrrB").innerHTML = rrrB.toFixed(2);
+
         screenUpdate();
     }
 //saving game data to local storage after every ball thrown
