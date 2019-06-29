@@ -8,7 +8,8 @@ var gameData = {
   runsB: 0,
   outsA: 0,
   outsB: 0,
-  bowlPerClick: 1
+  bowlPerClick: 1,
+  gameSpeed:6000,
 }
 
 //update the screen with gameData
@@ -21,6 +22,9 @@ function screenUpdate() {
         document.getElementById("outsA").innerHTML = gameData.outsA;
 
         var crrA = gameData.runsA / (gameData.overA + (gameData.bowlA/6));
+        if (!crrA) {
+            crrA = 0;
+        }
         document.getElementById("crrA").innerHTML = crrA.toFixed(2);
 
     //Team B Stats
@@ -29,6 +33,19 @@ function screenUpdate() {
 
         document.getElementById("runsB").innerHTML = gameData.runsB;
         document.getElementById("outsB").innerHTML = gameData.outsB;
+
+        var currentTeam = (gameData.overA < 50 && gameData.outsA < 10) ? "A" : "B";
+        if (currentTeam == "A") {
+            //hide TeamB RRR & runs to win
+            document.getElementById("lblRRRb").style.display = "none";
+            document.getElementById("rrrB").style.display = "none";
+            document.getElementById("trRunsToWin").style.display = "none";
+        } else {
+            //show TeamB RRR & runs to win
+            document.getElementById("lblRRRb").style.display = "";
+            document.getElementById("rrrB").style.display = "";
+            document.getElementById("trRunsToWin").style.display = "";
+        }
 
 }
 
@@ -85,7 +102,7 @@ function clickThrowBall() {
     throwBall();
 
     clearInterval(mainGameLoop);
-    mainGameLoop = setInterval(throwBall,5000);
+    mainGameLoop = setInterval(throwBall,gameData.gameSpeed);
 }
 
 function hit() {
@@ -133,7 +150,6 @@ function throwBall() {
         return;
     }
 
-    var currentTeam = gameData.overA<50 ? "A" : "B";
     var runs = 0;
     var outs = 0;
 
@@ -198,11 +214,12 @@ function declareWinner() {
     else {
         document.getElementById("gameWinner").innerHTML = gameWinner + " won by " + (10 - gameData.outsB) + " wickets" ;
     }
+
+    //hide RRR and runs to win on win    
+    document.getElementById("lblRRRb").style.display = "none";
+    document.getElementById("rrrB").style.display = "none";
+    document.getElementById("trRunsToWin").style.display = "none";
 }
-//on win
-document.getElementById("gameWinner").style += "display:none;"
-//on new game
-document.getElementById("gameWinner").style += "display:initial;"
 
 //Idle Functionality: throws one pitch every 5 seconds
 var mainGameLoop = setInterval(throwBall,5000);
@@ -214,6 +231,7 @@ function changeSpeed()
     clearInterval(mainGameLoop);
     mainGameLoop = setInterval(throwBall,speed);
     document.getElementById("lblSpeed").innerHTML = (speed / 1000 * 600 / 60);
+    gameData.gameSpeed = speed;
 }
 
 //setting a New Game
@@ -249,7 +267,7 @@ function newGame() {
     gameData.gameNumber += 1;
     document.getElementById("gameNumber").innerHTML = gameData.gameNumber;
     saveGame();
-
+    screenUpdate();
 }
 
 /*
