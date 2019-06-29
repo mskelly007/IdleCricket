@@ -10,6 +10,41 @@ var gameData = {
   outsB: 0,
   bowlPerClick: 1
 }
+
+//update the screen with gameData
+function screenUpdate() {
+    //Team A Stats
+        var overCountA = gameData.overA + "." + gameData.bowlA;
+        document.getElementById("overCountA").innerHTML = overCountA;
+
+        document.getElementById("runsA").innerHTML = gameData.runsA;
+        document.getElementById("outsA").innerHTML = gameData.outsA;
+
+        var crrA = gameData.runsA / (gameData.overA + (gameData.bowlA/6));
+        document.getElementById("crrA").innerHTML = crrA.toFixed(2);
+
+    //Team B Stats
+        var overCountB = gameData.overB + "." + gameData.bowlB;
+        document.getElementById("overCountB").innerHTML = overCountB;
+
+        document.getElementById("runsB").innerHTML = gameData.runsB;
+        document.getElementById("outsB").innerHTML = gameData.outsB;
+
+        var crrB = gameData.runsB / (gameData.overB + (gameData.bowlB/6));
+        document.getElementById("crrB").innerHTML = crrB.toFixed(2);
+
+        var runsToWin = (gameData.runsA + 1)-gameData.runsB;
+        document.getElementById("runsToWin").innerHTML = runsToWin;
+
+        var bowlsRemaining = (((49 - gameData.overB)*6)+(6-gameData.bowlB));
+        document.getElementById("bowlsRemaining").innerHTML = bowlsRemaining;
+
+        var rrrB = runsToWin / (bowlsRemaining/6);
+        document.getElementById("rrrB").innerHTML = rrrB.toFixed(2);
+
+
+}
+
 //load the game
 function loadGame(){
     if (localStorage.getItem('CricketSave')){
@@ -137,17 +172,8 @@ function throwBall() {
             gameData.overA++;
             gameData.bowlA = 0;
         }
-
-        var overCountA = gameData.overA + "." + gameData.bowlA;
-        document.getElementById("overCountA").innerHTML = overCountA;
-
-        document.getElementById("runsA").innerHTML = gameData.runsA;
-        document.getElementById("outsA").innerHTML = gameData.outsA;
-
-        var crrA = gameData.runsA / (gameData.overA + (gameData.bowlA/6));
-        document.getElementById("crrA").innerHTML = crrA.toFixed(2);
-
-    }
+        screenUpdate();
+     }
     else {
         gameData.bowlB += gameData.bowlPerClick;
         gameData.runsB += runs;
@@ -157,23 +183,7 @@ function throwBall() {
             gameData.overB++;
             gameData.bowlB = 0;
         }
-        var overCountB = gameData.overB + "." + gameData.bowlB;
-        document.getElementById("overCountB").innerHTML = overCountB;
-
-        document.getElementById("runsB").innerHTML = gameData.runsB;
-        document.getElementById("outsB").innerHTML = gameData.outsB;
-
-        var crrB = gameData.runsB / (gameData.overB + (gameData.bowlB/6));
-        document.getElementById("crrB").innerHTML = crrB.toFixed(2);
-
-        var runsToWin = (gameData.runsA + 1)-gameData.runsB;
-        document.getElementById("runsToWin").innerHTML = runsToWin;
-
-        var bowlsRemaining = (((49 - gameData.overB)*6)+(6-gameData.bowlB));
-        document.getElementById("bowlsRemaining").innerHTML = bowlsRemaining;
-
-        var rrrB = runsToWin / (bowlsRemaining/6);
-        document.getElementById("rrrB").innerHTML = rrrB.toFixed(2);
+        screenUpdate();
     }
 //saving game data to local storage after every ball thrown
     saveGame();
@@ -194,12 +204,14 @@ function declareWinner() {
 document.getElementById("gameWinner").style += "display:none;"
 //on new game
 document.getElementById("gameWinner").style += "display:initial;"
+
 //Idle Functionality: throws one pitch every 5 seconds
 var mainGameLoop = setInterval(throwBall,5000);
 
+//changing the speed of bowls thrown
 function changeSpeed()
 {
-    var speed = document.getElementById("speedSlider").value * 1000;    
+    var speed = document.getElementById("speedSlider").value * 1000;
     clearInterval(mainGameLoop);
     mainGameLoop = setInterval(throwBall,speed);
     document.getElementById("lblSpeed").innerHTML = (speed / 1000 * 600 / 60);
@@ -208,9 +220,9 @@ function changeSpeed()
 //setting a New Game
 function newGame() {
 
-//saving game stats to a table and calculate points for tournament
+    //saving game stats to a table and calculate points for tournament
 
-//resetting game stats to 0
+    //resetting game stats to 0
     gameData.overA=0;
     gameData.overB=0;
     gameData.bowlA=0;
@@ -220,7 +232,7 @@ function newGame() {
     gameData.outsA=0;
     gameData.outsB=0;
 
-//resetting displays to 0
+    //resetting displays to 0
     document.getElementById("overCountA").innerHTML = "0.0";
     document.getElementById("runsA").innerHTML = 0;
     document.getElementById("outsA").innerHTML = 0;
@@ -234,7 +246,7 @@ function newGame() {
     document.getElementById("rrrB").innerHTML = "0.00";
     document.getElementById("gameWinner").innerHTML = "";
 
-//increasing game #
+    //increasing game #
     gameData.gameNumber += 1;
     document.getElementById("gameNumber").innerHTML = gameData.gameNumber;
     saveGame();
