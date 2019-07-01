@@ -196,7 +196,12 @@ function throwBall() {
         document.getElementById("bowlsRemaining").innerHTML = bowlsRemaining;
 
         var rrrB = runsToWin / (bowlsRemaining/6);
-        document.getElementById("rrrB").innerHTML = rrrB.toFixed(2);
+        if (rrrB >= 36) {
+            document.getElementById("rrrB").innerHTML = ">36";
+        }
+        else {
+            document.getElementById("rrrB").innerHTML = rrrB.toFixed(2);
+        }
 
         screenUpdate();
     }
@@ -215,7 +220,7 @@ function declareWinner() {
         document.getElementById("gameWinner").innerHTML = gameWinner + " won by " + (10 - gameData.outsB) + " wickets" ;
     }
 
-    //hide RRR and runs to win on win    
+    //hide RRR and runs to win on win
     document.getElementById("lblRRRb").style.display = "none";
     document.getElementById("rrrB").style.display = "none";
     document.getElementById("trRunsToWin").style.display = "none";
