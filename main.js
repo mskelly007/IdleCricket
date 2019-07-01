@@ -274,6 +274,52 @@ function newGame() {
     saveGame();
     screenUpdate();
 }
+/*
+//coinflip loads on new game
+if (overCountA == "0.0") {
+    coinFlip();
+}
+
+//the coinflip which determines which team gets to choose bowl or bat first
+function coinFlip() {
+    //the coin flip
+    var coinFlip = Math.random();
+    if (coinFlip <= 0.5) {
+        var flipResult = "heads";
+    }
+    else {
+        var flipResult = "tails";
+    }
+    //prompt for player's choice
+    var choice = prompt("Heads or Tails");
+
+    //compare coinflip to choice
+    if (flipResult == choice) {
+        if (flipResult == "heads") {
+            alert("The flip was heads and you chose heads...you win!");
+            //prompt for Bowl first or Bat first
+            //place teams on appropriate side
+        }
+        else {
+            alert("The flip was tails and you chose tails...you win!");
+            //prompt for Bowl first or Bat first
+            //place teams on appropriate side
+        }
+    }
+    else {
+        if (flipResult == "heads") {
+            alert("The flip was heads and you chose tails...you lose!");
+            //randomly determine whether opposing team chose Bat or Bowl first
+            //place teams on appropriate side
+        }
+        else {
+            alert("The flip was tails and you chose heads...you lose!");
+            //randomly determine whether opposing team chose Bat or Bowl first
+            //place teams on appropriate side
+        }
+    }
+}
+*/
 
 /*
 I would think about this:
