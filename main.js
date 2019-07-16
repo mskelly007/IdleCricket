@@ -220,7 +220,7 @@ function declareWinner() {
         document.getElementById("gameWinner").innerHTML = gameWinner + " won by " + (10 - gameData.outsB) + " wickets" ;
     }
 
-    //hide RRR and runs to win on win
+    //hide RRR and runs to win on game end
     document.getElementById("lblRRRb").style.display = "none";
     document.getElementById("rrrB").style.display = "none";
     document.getElementById("trRunsToWin").style.display = "none";
@@ -274,7 +274,7 @@ function newGame() {
     saveGame();
     screenUpdate();
 }
-/*
+
 //coinflip loads on new game
 if (overCountA == "0.0") {
     coinFlip();
@@ -297,29 +297,45 @@ function coinFlip() {
     if (flipResult == choice) {
         if (flipResult == "heads") {
             alert("The flip was heads and you chose heads...you win!");
-            //prompt for Bowl first or Bat first
-            //place teams on appropriate side
         }
         else {
             alert("The flip was tails and you chose tails...you win!");
-            //prompt for Bowl first or Bat first
-            //place teams on appropriate side
+        }
+        //prompt for Bowl first or Bat first
+        var inningsChoice = prompt("Bat or Bowl first?");
+        //place teams on appropriate side
+        if (inningsChoice == "bat") {
+            document.getElementById("Team 1").innerHTML = "Team A";
+            document.getElementById("Team 2").innerHTML = "Team B";
+        }
+        else {
+            document.getElementById("Team 2").innerHTML = "Team A";
+            document.getElementById("Team 1").innerHTML = "Team B";
         }
     }
     else {
         if (flipResult == "heads") {
             alert("The flip was heads and you chose tails...you lose!");
-            //randomly determine whether opposing team chose Bat or Bowl first
-            //place teams on appropriate side
         }
         else {
             alert("The flip was tails and you chose heads...you lose!");
-            //randomly determine whether opposing team chose Bat or Bowl first
-            //place teams on appropriate side
+        }
+        //randomly determine whether opposing team chose Bat or Bowl first
+        //and place teams on approriate sides
+        var aiInningsChoice = Math.random();
+        if (aiInningsChoice <= .50) {
+            alert("Team B has chosen to Bat first");
+            document.getElementById("Team 2").innerHTML = "Team A";
+            document.getElementById("Team 1").innerHTML = "Team B";
+        }
+        else {
+            alert("Team B has chosen to Bowl first");
+            document.getElementById("Team 1").innerHTML = "Team A";
+            document.getElementById("Team 2").innerHTML = "Team B";
         }
     }
 }
-*/
+
 
 /*
 I would think about this:
