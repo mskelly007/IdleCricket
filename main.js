@@ -47,6 +47,9 @@ function screenUpdate() {
             document.getElementById("trRunsToWin").style.display = "";
         }
 
+    //other
+    changeSpeed();
+
 }
 
 //load the game
