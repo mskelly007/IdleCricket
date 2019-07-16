@@ -273,10 +273,6 @@ function newGame() {
     document.getElementById("gameNumber").innerHTML = gameData.gameNumber;
     saveGame();
     screenUpdate();
-}
-
-//coinflip loads on new game
-if (overCountA == "0.0") {
     coinFlip();
 }
 
@@ -291,7 +287,7 @@ function coinFlip() {
         var flipResult = "tails";
     }
     //prompt for player's choice
-    var choice = prompt("Heads or Tails");
+    var choice = prompt("Heads or Tails").toLowerCase();
 
     //compare coinflip to choice
     if (flipResult == choice) {
@@ -302,7 +298,7 @@ function coinFlip() {
             alert("The flip was tails and you chose tails...you win!");
         }
         //prompt for Bowl first or Bat first
-        var inningsChoice = prompt("Bat or Bowl first?");
+        var inningsChoice = prompt("Bat or Bowl first?").toLowerCase();
         //place teams on appropriate side
         if (inningsChoice == "bat") {
             document.getElementById("Team 1").innerHTML = "Team A";
