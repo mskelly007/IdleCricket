@@ -217,11 +217,11 @@ function throwBall() {
 function declareWinner() {
     var gameWinner = gameData.runsA>gameData.runsB ? "Team A" : "Team B" ;
     if (gameWinner == "Team A") {
-        var teamName = document.getElementById("Team 1");
+        var teamName = document.getElementById("Team 1").innerHTML;
         document.getElementById("gameWinner").innerHTML = teamName + " won by " + (gameData.runsA - gameData.runsB) + " runs" ;
     }
     else {
-        var teamName = document.getElementById("Team 2");
+        var teamName = document.getElementById("Team 2").innerHTML;
         document.getElementById("gameWinner").innerHTML = teamName + " won by " + (10 - gameData.outsB) + " wickets" ;
     }
 
