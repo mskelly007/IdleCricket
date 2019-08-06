@@ -215,14 +215,16 @@ function throwBall() {
 
 //Declares winner at end of game
 function declareWinner() {
-    var gameWinner = gameData.runsA>gameData.runsB ? "Team A" : "Team B" ;
-    if (gameWinner == "Team A") {
+    //var gameWinner = gameData.runsA>gameData.runsB ? "Team A" : "Team B" ;
+    if (gameData.runsA>gameData.runsB) {
         var teamName = document.getElementById("Team 1").innerHTML;
         document.getElementById("gameWinner").innerHTML = teamName + " won by " + (gameData.runsA - gameData.runsB) + " runs" ;
     }
-    else {
+    else if (gameData.runsA<gameData.runsB) {
         var teamName = document.getElementById("Team 2").innerHTML;
         document.getElementById("gameWinner").innerHTML = teamName + " won by " + (10 - gameData.outsB) + " wickets" ;
+    } else {
+        document.getElementById("gameWinner").innerHTML = "Tie game!";
     }
 
     //hide RRR and runs to win on game end
